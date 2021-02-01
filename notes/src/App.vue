@@ -47,21 +47,11 @@ export default {
 				descr: '',
 				priority: 'low',
 			},
-			notes: [
-				{
-					title: 'First Note',
-					descr: 'awdawd awd awd awd awd',
-					date: new Date(Date.now()).toLocaleString(),
-					priority: 'low',
-				},
-				{
-					title: 'First Note',
-					descr: 'awdawd awd awd awd awd',
-					date: new Date(Date.now()).toLocaleString(),
-					priority: 'middle',
-				},
-			],
+			notes: []
 		};
+	},
+	created() {
+		this.notes = this.$store.getters.getNotes;
 	},
 	computed: {
 		notesFilter() {
@@ -91,7 +81,7 @@ export default {
 				return false;
 			}
 
-			this.notes.push({
+			this.$store.dispatch('addNote', {
 				title,
 				descr,
 				date: new Date(Date.now()).toLocaleString(),
@@ -104,8 +94,8 @@ export default {
 			this.note.priority = 'low';
 		},
 		removeNote(index) {
-			this.notes.splice(index, 1);
+			this.$store.dispatch('removeNote', index);
 		},
 	},
 };
-</script>z
+</script>
