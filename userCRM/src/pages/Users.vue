@@ -89,13 +89,13 @@ export default {
 			}
 			this.currentSort = e;
 		},
-		// PAgination
+		// Pagination
 		prevPage(){
 			if (this.page.current > 1) this.page.current -= 1
 		},
 
 		nextPage() {
-			if ( (this.page.current * this.page.length) < this.users.length) this.page.current += 1
+			if ((this.page.current * this.page.length) < this.users.length) this.page.current += 1
 		},
 	}
 }
